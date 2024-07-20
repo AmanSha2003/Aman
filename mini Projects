@@ -1,0 +1,201 @@
+1.## Vowel Words:- output will give in 'aeiou' words
+
+roll_no = range(1,11)
+
+names = ['karan','ajay','aman','ravi','sonu','monu','rahul','rakesh','amit','shray']
+
+data = {i:j for i,j in zip(roll_no,names)}
+print(data)
+
+output = {1: 'karan', 2: 'ajay', 3: 'aman', 4: 'ravi', 5: 'sonu', 6: 'monu', 7: 'rahul', 8: 'rakesh', 9: 'amit', 10: 'shray'}
+
+
+2.## give a fibbo numbers using def function:- 
+
+def get_fibbo(howmuch:'int'):
+    '''to get fibbo no based on given length'''
+    if type(howmuch) == int:
+        fibbo = [0,1]
+       
+        for i in range(howmuch-2):
+           fibbo.append(fibbo[-1] + fibbo[-2])
+    
+        # print('fibbo is: ',fibbo)
+        return fibbo
+    else:
+        return None
+
+input = print(get_fibbo(10)+[52,41,74,85,96])
+output = fibbo is:  [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 52, 41, 74, 85, 96]
+
+
+3.## interview ques:- write a function which takes two words and check they are anagram or not:-
+
+def check_anagram(str1,str2)-> str:
+    '''to ge a anagram based on given str
+    ex: ear,are
+    ans: True '''
+    data1 = {}
+    data2 = {}
+    for i in str1:
+        data1[i] = str1.count(i)
+    for j in str2:
+        data2[j] = str2.count(j)
+        
+    return 'Anagram'if data1 == data2 else 'not an Anagram'
+
+# input = check_anagram('heart','earth')
+# output = 'Anagram'
+
+
+4.## Q2= check it is a pallindrom or not:-
+
+def check_pallindrom (string:'str'):
+    return 'pallindrom'if string.lower() == string.lower()[::-1] else 'not a pallindrom'
+
+input = check_pallindrom('nitin')
+output = 'Pallindrom'
+
+5.## check it is a prime num or not
+
+def check_prime_no(num):
+    for i in range(2,num):
+        if num%i == 0:
+            break
+    else:
+        return num
+
+input = check_prime_no(11)
+output = 11 (armstrong)
+
+
+6.## give a prime number
+
+def give_prime(number):
+    result = []
+    for i in range(2,number+1):
+        if check_prime_no(i) != None:
+            result.append(check_prime_no(i))
+   
+    return result
+
+input = print(give_prime(250))
+output = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127,
+         131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+
+
+
+
+7.## KBC game:-
+
+from gtts import gTTS
+import pygame
+pygame.init()
+
+
+
+import time
+
+questions =['Which one of the following river flows between Vindhyan and Satpura ranges?',
+           'The Central Rice Research Station is situated in?',
+           'Who among the following wrote Sanskrit grammar?',
+           'Which among the following headstreams meets the Ganges in last?',
+           'The metal whose salts are sensitive to light is?']
+
+options = [['Narmada','Mahanadi','Son','Netravati'],
+           ['Chennai','Cuttack','Bangalore','Quilon'],
+           ['Kalidasa','Charak','Panini','Aryabhatt'],
+           ['Alaknanda','Pindar','Mandakini','Bhagirathi'],
+           ['Zinc','Silver','Copper','Aluminum']]
+
+correct_op = ['A','B','C','D','B']
+total_money = 0
+
+opt = 'ABCD'
+
+for index,quest in enumerate (questions):
+    print(f'question no: {index+1}',quest)
+    
+    audio = gTTS(quest)
+    audio.save('quest.mp3')
+               
+    music = pygame.mixer.Sound('quest.mp3')
+    music.play()
+    time.sleep(4)
+    
+    print ()
+    for op_index,op_value in enumerate (options[index]):
+        
+        print(f'{opt[op_index]}: ',op_value)
+        
+        audio = gTTS(f'option {opt[op_index]},{op_value}')
+        audio.save('op.mp3')
+                   
+        music = pygame.mixer.Sound('op.mp3')
+        music.play()
+        if len(f'option {opt[op_index]},{op_value}')<10:
+            time.sleep(1.5)
+        elif len(f'option {opt[op_index]},{op_value}')>10:
+            time.sleep(3)
+        
+    user_ans = input('enter your option: ').upper()
+    
+    correct_ans = correct_op[index]
+    
+    if user_ans == correct_ans:
+        print('correct answer!!')
+        
+        audio = gTTS('correct answer')
+        audio.save('ans.mp3')
+
+        music = pygame.mixer.Sound('ans.mp3')
+        music.play()
+        time .sleep(1)
+        total_money+= 14000000
+    else:
+        print('wrong answer!!')
+        audio = gTTS('wrong answer')
+        audio.save('wns.mp3')
+
+        music = pygame.mixer.Sound('wns.mp3')
+        music.play()
+        time.sleep(1)
+        print(end='\n\n')
+
+        print('7 crore!!')
+        audio = gTTS('7 crore')
+        audio.save('win.mp3')
+
+        music = pygame.mixer.Sound('win.mp3')
+        music.play()
+        
+print(f'you won amount Rs {total_money}')
+
+
+
+
+
+8.## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
